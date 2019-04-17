@@ -1,3 +1,9 @@
+/*
+ * NTUA ECE PL1 2016-2017 Set3 Skitrip SWI-Prolog
+ * Constantinos Karouzos ckarouzos@gmail.com 03114176
+ * Alexandros Kafiris alexkafiris@gmail.com 03114044
+*/
+
 read_input(File,NumberOfStations) :-
     open(File,read,Stream),
     read_line(Stream,NumberOfStations).
@@ -73,13 +79,13 @@ solve(List1,List2,Result):-
   once(find(List1,List2,X)),
   once(findMax(X,Result)).
 
-my_max([], Result, Result). 
+my_max([], Result, Result).
 my_max([X|Xs], TempResult, Result):-
     X > TempResult, my_max(Xs, X, Result).
 my_max([X|Xs], TempResult, Result):-
     X =< TempResult, my_max(Xs, TempResult, Result).
 my_max([X|Xs], Result):-
-    my_max(Xs, X, Result). 
+    my_max(Xs, X, Result).
 
 skitrip(Filename,Result):-
     open(Filename,read,Stream),
@@ -91,6 +97,3 @@ skitrip(Filename,Result):-
   reverse(T,L),
   once(find(L,R,E)),
   my_max(E,Result).
-        
-
-      

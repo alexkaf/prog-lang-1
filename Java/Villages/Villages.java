@@ -1,3 +1,10 @@
+/*
+NTUA ECE PL1 2016-2017 Set2 Villages Java 
+Constantinos Karouzos ckarouzos@gmail.com 03114176
+Alexandros Kafiris alexkafiris@gmail.com 03114044
+
+*/
+
 import java.io.IOException;
 
 public class Villages{

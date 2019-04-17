@@ -1,3 +1,9 @@
+/*
+ * NTUA ECE PL1 2016-2017 Set2 Hopping SWI-Prolog
+ * Constantinos Karouzos ckarouzos@gmail.com 03114176
+ * Alexandros Kafiris alexkafiris@gmail.com 03114044
+*/
+
 read_input(File, N, K, B, Steps, Broken) :-
     open(File, read, Stream),
     read_line(Stream, [N, K, B]),
@@ -13,7 +19,7 @@ read_line(Stream, List) :-
     ).
 
 create_lader(N, N, [N-0]):-!.
-create_lader(Num, N, Lader0) :- 
+create_lader(Num, N, Lader0) :-
 	Num1 is Num +1,
 	create_lader(Num1, N, Al),!,
 	Lader0=[Num-0|Al].
@@ -68,4 +74,4 @@ hopping(File, Answer) :-
 	get_assoc(1, Lader, First),!,
 	get_assoc(N, Lader, Last),!,
 	check(First, Last, A),!,
-	(A =:= 0 -> count(N, Lader, Steps, 1, Answer),! ; Answer = 0),!. 
+	(A =:= 0 -> count(N, Lader, Steps, 1, Answer),! ; Answer = 0),!.

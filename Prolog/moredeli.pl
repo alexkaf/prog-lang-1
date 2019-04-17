@@ -1,3 +1,9 @@
+/*
+ * NTUA ECE PL1 2016-2017 Set3 Moredeli SWI-Prolog
+ * Constantinos Karouzos ckarouzos@gmail.com 03114176
+ * Alexandros Kafiris alexkafiris@gmail.com 03114044
+*/
+
 moredeli(Filename,Cost,Solution):-
     open(Filename,read,InStream),
     read_from_stream(InStream,PList,Steps,M,Allpos,S,E),
@@ -32,7 +38,7 @@ checkInput(M,Counter,InStream,A,[Counter - A|Rest1],[Counter - [a,-1,4000000]|Re
 
 add_heap(Heap,A - B,NewHeap):- add_to_heap(Heap,A,B,NewHeap).
 
-takeNode(Heap,[A - B],NewHeap):- 
+takeNode(Heap,[A - B],NewHeap):-
     min_of_heap(Heap,A,B),
     get_from_heap(Heap,A,B,NewHeap).
 
@@ -57,7 +63,7 @@ check(CurrentPos,NextPos,Cost,PQ,NPQ,M,S,NS):-
     get_assoc(CurrentPos,S,[_,_,C1]),
     get_assoc(NextPos,S,[_,_,C2]),
     Z is C1 + Cost,
-    (Z < C2 -> add_to_heap(PQ,Z,NextPos,NPQ), 
+    (Z < C2 -> add_to_heap(PQ,Z,NextPos,NPQ),
         K is CurrentPos - NextPos,
         (K =:= 1 -> put_assoc(NextPos,S,[l,CurrentPos,Z],NS);true),
         (K =:= -1 -> put_assoc(NextPos,S,[r,CurrentPos,Z],NS);true),
@@ -85,6 +91,4 @@ findRoute(S,S,_,[]).
 findRoute(S,CurrentPos,SR,Route):-
     get_assoc(CurrentPos,SR,[Step,PrevPos,_]),
     findRoute(S,PrevPos,SR,R),!,
-    append(R,[Step],Route).        
-
-      
+    append(R,[Step],Route).
